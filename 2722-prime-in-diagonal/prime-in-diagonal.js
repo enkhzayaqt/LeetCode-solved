@@ -8,13 +8,11 @@ function diagonalPrime(nums) {
         for(let i = 2; i<num; i++){
             if(num % i == 0){
             return false;
-            break;
             }
         }
         return true;
     }
 
-    let primeArr = [];
     let len = nums.length-1;
     let res = 0;
 
