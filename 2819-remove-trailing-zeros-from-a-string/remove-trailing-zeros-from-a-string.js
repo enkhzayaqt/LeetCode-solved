@@ -3,11 +3,11 @@
  * @return {string}
  */
 var removeTrailingZeros = function(num) {
-    if(num[num.length -1] != '0')  return num
-    let arr = num.split('');
-    while(arr[arr.length-1] == '0'){
-        arr.pop()
+    if(num[num.length-1] != '0') return num;
+
+    let result = '';
+    for(let i = num.length-1; i >=0; i--){
+        if(num[i] != '0' || result.length > 0) result = num[i] + result;
     }
-    
-    return arr.join('');
+    return result
 };
