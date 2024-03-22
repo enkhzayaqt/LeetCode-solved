@@ -10,15 +10,18 @@
  * @return {boolean}
  */
 var isPalindrome = function(head) {
-    // create new array 
     let arr = [];
-    // loop linkedlist and put all node into array
     while(head){
         arr.push(head.val);
         head = head.next;
     }
-    for(let i = 0, j = arr.length -1; i < j; i++, j--){
-        if(arr[i] != arr[j]) return false
+    let l = 0;
+    let r = arr.length - 1;
+    while(l < r){
+        if(arr[l] == arr[r]){
+            l++;
+            r--;
+        } else return false
     }
     return true;
 };
