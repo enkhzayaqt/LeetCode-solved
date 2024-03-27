@@ -3,9 +3,6 @@
  * @param {number} k
  * @return {number}
  */
- const productOfArray = (arr)=>{
-
- }
 var numSubarrayProductLessThanK = function(nums, k) {
     // find all the sub array using nested loop
     // check if product is less than k increase count
