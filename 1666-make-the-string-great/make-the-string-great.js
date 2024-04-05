@@ -14,7 +14,7 @@ var makeGood = function(s) {
     while(i < arr.length-1){
         if(arr[i] && arr[i+1] && arr[i].toUpperCase() == arr[i+1].toUpperCase() && arr[i] !== arr[i + 1]) {
             arr.splice(i,2);
-            i--;
+            i=0;
             continue;
         }
         i++
