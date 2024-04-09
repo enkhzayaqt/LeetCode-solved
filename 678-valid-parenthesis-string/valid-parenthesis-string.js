@@ -6,7 +6,7 @@ var checkValidString = function(s) {
     // edge case: if its start with closing return false;
     if(s[0] == ')') return false;
 
-       let low = 0, high = 0;
+    let low = 0, high = 0;
 
     for (const c of s) {
         if (c === '(') {
