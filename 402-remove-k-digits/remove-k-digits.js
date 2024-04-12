@@ -6,6 +6,7 @@
 var removeKdigits = function(num, k) {
     // edge case:
     if(num.length == k) return '0';
+
     let stack = [];
     for(let n of num){
         while(k > 0 && stack.length && stack[stack.length-1] > n){
@@ -15,7 +16,7 @@ var removeKdigits = function(num, k) {
         if(stack.length == 0 && n == '0') continue
         stack.push(n);
     }
-    while(k>0 && stack.length>0){
+    while(k > 0 && stack.length > 0){
         k--;
         stack.pop();
     }
