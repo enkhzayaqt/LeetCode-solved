@@ -11,8 +11,8 @@
  * @return {number}
  */
 var sumNumbers = function(root) {
+
     const dfs = (cur, num) => {
-        console.log(cur)
         if(cur == null) return 0;
         if(!cur.left && !cur.right){
             return num * 10 + cur.val;
