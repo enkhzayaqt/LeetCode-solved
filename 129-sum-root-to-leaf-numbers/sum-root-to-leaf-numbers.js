@@ -14,10 +14,11 @@ var sumNumbers = function(root) {
 
     const dfs = (cur, num) => {
         if(cur == null) return 0;
+        num = num * 10 + cur.val
         if(!cur.left && !cur.right){
-            return num * 10 + cur.val;
+            return num;
         }
-        return dfs(cur.left, num * 10 + cur.val) + dfs(cur.right, num * 10 + cur.val)
+        return dfs(cur.left, num) + dfs(cur.right, num)
     }
     return dfs(root, 0)
 };
