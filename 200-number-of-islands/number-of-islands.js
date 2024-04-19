@@ -2,34 +2,42 @@
  * @param {character[][]} grid
  * @return {number}
  */
+var numIslands = function(grid) {
+    if (!grid || grid.length === 0) return 0;
 
- //time: O(r*c)
- //space: O(1)
-function numIslands (grid) {
-    // if empty return 0
-    if(!grid.length) return 0;
+    const rows = grid.length;
+    const cols = grid[0].length;
+    let islandCount = 0;
 
-    let row = grid.length;
-    let col = grid[0].length;
-    let count = 0;
+    const directions = [[-1, 0], [1, 0], [0, -1], [0, 1]];
 
-    function dfs(r,c){
-        if(r < 0 || r == row || c < 0 || c == col) return;
-        if(grid[r][c] != '1') return;
-        grid[r][c] = 'v';
+    function bfs(row, col) {
+        const queue = [[row, col]];
+        grid[row][col] = '0'; 
 
-        dfs(r-1, c);
-        dfs(r, c-1);
-        dfs(r+1, c);
-        dfs(r, c+1);
-    }
-    for(let r = 0; r < row; r++){
-        for(let c = 0; c < col; c++){
-            if(grid[r][c] == '1'){
-                dfs(r,c);
-                count++;
+        while (queue.length > 0) {
+            const [r, c] = queue.shift();
+
+            for (const [dr, dc] of directions) {
+                const newRow = r + dr;
+                const newCol = c + dc;
+
+                if (newRow >= 0 && newRow < rows && newCol >= 0 && newCol < cols && grid[newRow][newCol] === '1') {
+                    queue.push([newRow, newCol]);
+                    grid[newRow][newCol] = '0'; 
+                }
             }
         }
     }
-    return count;
+
+    for (let i = 0; i < rows; i++) {
+        for (let j = 0; j < cols; j++) {
+            if (grid[i][j] === '1') {
+                islandCount++;
+                bfs(i, j);
+            }
+        }
+    }
+
+    return islandCount;
 };
