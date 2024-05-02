@@ -22,5 +22,4 @@ var findMaxK = function(nums) {
         }else r--;
     }
     return -1;
-    console.log(nums[l])
 };
