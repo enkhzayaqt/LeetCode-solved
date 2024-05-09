@@ -9,10 +9,10 @@ var maximumHappinessSum = function(happiness, k) {
     
     let i = 1; 
     let sorted = happiness.sort((a,b) => b-a);
-    let maxArr = [happiness[0]];
+    let max = happiness[0];
     while(i < k){
-        if((happiness[i] - i) > 0) maxArr.push(happiness[i] - i);
+        if((happiness[i] - i) > 0) max += (happiness[i] - i);
         i++;
     }
-    return maxArr.reduce((acc, cur) => acc + cur, 0);
+    return max;
 };
