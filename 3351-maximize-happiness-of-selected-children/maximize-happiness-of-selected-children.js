@@ -8,9 +8,9 @@ var maximumHappinessSum = function(happiness, k) {
     // pick k number of max kids and before saving them into maxArr reduce by i times;
     let i = 1; 
     let sorted = happiness.sort((a,b) => b-a);
-    let max = happiness[0];
+    let max = sorted[0];
     while(i < k){
-        if((happiness[i] - i) > 0) max += (happiness[i] - i);
+        if((sorted[i] - i) > 0) max += (sorted[i] - i);
         i++;
     }
     return max;
