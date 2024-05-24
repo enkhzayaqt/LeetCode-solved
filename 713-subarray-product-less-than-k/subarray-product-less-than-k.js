@@ -4,16 +4,23 @@
  * @return {number}
  */
 var numSubarrayProductLessThanK = function(nums, k) {
-    let res = 0;
-    let left = 0;
-    let product = 1;
-    for(let right in nums){
-        product *= nums[right];
-        while(left <= right && product >= k){
-            product = product / nums[left];
-            left++;
+    // brute force solution;
+    // run nested loop;
+    // check all the products
+    // if product is strictly less than k put it in result array
+    // if not end that loop;
+    // return result array length;
+    
+    let count = 0;
+    for(let i = 0; i < nums.length; i++){
+        if(nums[i] < k) count++;
+        let product = nums[i];
+        for(let j = i+1; j < nums.length; j++){
+            product *= nums[j];
+            if(product < k){
+                count++;
+            }else break;
         }
-        res += (right - left + 1);
     }
-    return res;
+    return count;
 };
