@@ -29,11 +29,10 @@ var maxProfit = function(prices) {
     let min = prices[0];
     let maxDiff = 0;
     for(let price of prices){
-        if(price > min){
-            maxDiff = Math.max(maxDiff, (price - min));
-        }else {
-            min = price;
-        }
+        min = Math.min(min, price);
+        maxDiff = Math.max(maxDiff, (price - min));
     }
     return maxDiff
+    // time: O(n);
+    // space: 0(1);
 }
