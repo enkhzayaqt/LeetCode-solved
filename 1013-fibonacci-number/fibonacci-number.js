@@ -11,9 +11,13 @@ var memo = function(n, memo = {}) {
 };
 
 var fib = function(n) {
-    let arr = [0,1,1];
+    if(n == 0) return 0;
+    let a = 1;
+    let b = 1
     for(let i = 3; i <= n; i++){
-        arr.push((arr[i-1]) + (arr[i-2]));
+        let temp = a;
+        a = b;
+        b = (temp + b);
     }
-    return arr[n];
+    return b;
 }
