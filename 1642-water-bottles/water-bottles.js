@@ -6,16 +6,10 @@
 var numWaterBottles = function(numBottles, numExchange) {
     let res = numBottles;
 
-    while(numBottles / numExchange > 0){
+    while(numBottles >= numExchange){
         let n = Math.floor(numBottles / numExchange)
         res += n;
-
-        if(numBottles > numExchange){
-            numBottles = n + (numBottles % numExchange);
-        }else {
-            numBottles = n;
-        }
-        
+        numBottles = n + (numBottles % numExchange);  
     }
     return res
 };
