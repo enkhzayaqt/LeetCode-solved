@@ -2,27 +2,33 @@
  * @param {number[]} nums
  * @return {number[]}
  */
+ function merge(left, right) {
+    let result = [];
+    let leftIndex = 0;
+    let rightIndex = 0;
 
-function helperFunction(arr1, arr2){
-    let resArr = [];
-    while(arr1.length && arr2.length){
-        if(arr1[0] <= arr2[0]) resArr.push(arr1.shift());
-        else resArr.push(arr2.shift());
+    while (leftIndex < left.length && rightIndex < right.length) {
+        if (left[leftIndex] < right[rightIndex]) {
+            result.push(left[leftIndex]);
+            leftIndex++;
+        } else {
+            result.push(right[rightIndex]);
+            rightIndex++;
+        }
     }
-    return [...resArr, ...arr1, ...arr2]
+
+    return result.concat(left.slice(leftIndex)).concat(right.slice(rightIndex));
 }
-function sortArray (nums) {
-    // merge sort
-    // find midle
-    // declare left, right  
-    // divide array into two halves
-    // repeat recursivly until array has no element to divide
 
-    if(nums.length <= 1) return nums;
+var sortArray = function(nums) {
+    if (nums.length <= 1) {
+        return nums;
+    }
 
-    let midIdx = Math.floor(nums.length / 2);
-    let leftPart = nums.slice(0,midIdx);
-    let rightPrt = nums.slice(midIdx);
-    return helperFunction(sortArray(leftPart), sortArray(rightPrt));
+    const mid = Math.floor(nums.length / 2);
+    const l = nums.slice(0, mid);
+    const r = nums.slice(mid);
 
+    return merge(sortArray(l), sortArray(r));
 };
+
